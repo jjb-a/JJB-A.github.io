@@ -1,4 +1,5 @@
 // DOM元素获取
+console.log("✅ script.js 加载成功！");
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const enterExhibition = document.getElementById('enter-exhibition');
@@ -114,14 +115,37 @@ const knowledgeList = [
 ];
 
 // 可互动砖雕小人
-brickDoll.addEventListener('click', () => {
-    const randomKnowledge = knowledgeList[Math.floor(Math.random() * knowledgeList.length)];
-    knowledgeContent.textContent = randomKnowledge;
-    knowledgePopup.classList.add('active');
-});
+// 原始的点击事件功能
+if (brickDoll) {
+    // 确保砖雕小人始终可见
+    brickDoll.style.display = 'block';
+    brickDoll.style.zIndex = '9999';
+    
+    // 添加点击事件监听器
+    brickDoll.addEventListener('click', (e) => {
+        // 阻止默认行为和事件冒泡
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log('砖雕小人被点击了！');
+        
+        // 显示砖雕小知识
+        const randomKnowledge = knowledgeList[Math.floor(Math.random() * knowledgeList.length)];
+        knowledgeContent.textContent = randomKnowledge;
+        knowledgePopup.classList.add('active');
+        
+        // 确保知识弹窗可见（通过类控制，不使用内联样式）
+        knowledgePopup.style.zIndex = '1100';
+    });
+}
 
-closeKnowledge.addEventListener('click', () => {
+closeKnowledge.addEventListener('click', (e) => {
+    // 阻止事件冒泡
+    e.stopPropagation();
+    console.log('关闭按钮被点击了！');
     knowledgePopup.classList.remove('active');
+    // 确保弹窗被隐藏
+    knowledgePopup.style.display = 'none';
 });
 
 // 拖动砖雕小人
@@ -133,6 +157,8 @@ brickDoll.addEventListener('mousedown', (e) => {
     isDraggingDoll = true;
     dollStartX = e.clientX - brickDoll.getBoundingClientRect().left;
     dollStartY = e.clientY - brickDoll.getBoundingClientRect().top;
+    // 阻止model-viewer的默认行为
+    e.stopPropagation();
 });
 
 window.addEventListener('mouseup', () => {
@@ -155,6 +181,8 @@ brickDoll.addEventListener('touchstart', (e) => {
     isDraggingDoll = true;
     dollStartX = e.touches[0].clientX - brickDoll.getBoundingClientRect().left;
     dollStartY = e.touches[0].clientY - brickDoll.getBoundingClientRect().top;
+    // 阻止model-viewer的默认行为
+    e.stopPropagation();
 });
 
 window.addEventListener('touchend', () => {
@@ -305,3 +333,78 @@ window.addEventListener('DOMContentLoaded', () => {
     // 初始化页面
     console.log('临夏砖雕网页加载完成');
 });
+
+// 网页朗读 + 自动高亮
+function readAndHighlight() {
+  // 找到页面里所有正文段落（section 和 .card 下的 p 标签）
+  const paragraphs = document.querySelectorAll("section p, .card p");
+
+  if (paragraphs.length === 0) {
+    alert("没找到可朗读的正文内容哦！");
+    return;
+  }
+
+  let currentIndex = 0;
+  const synth = window.speechSynthesis;
+
+  // 停止之前可能在播放的语音
+  synth.cancel();
+
+  // 核心：逐段朗读 + 移动数字人
+  function readNext() {
+    // 读完所有段落就停止
+    if (currentIndex >= paragraphs.length) {
+      document.querySelectorAll(".highlight").forEach(el => el.classList.remove("highlight"));
+      return;
+    }
+
+    // 1. 先拿到当前要读的段落
+    const el = paragraphs[currentIndex];
+
+    // 2. 让数字人跟着当前朗读段落移动
+    const doll = document.getElementById('brick-doll');
+    if (doll) {
+      const rect = el.getBoundingClientRect();
+      // 确保数字人不会消失，设置合理的位置
+      const newTop = Math.max(20, rect.top + window.scrollY + rect.height / 2 - 230);
+      doll.style.bottom = 'auto';
+      
+      doll.style.right = '20px';
+      // 确保数字人始终可见
+      doll.style.display = 'block';
+      doll.style.zIndex = '9999';
+      
+      // 确保model-viewer正常显示
+    }
+
+    // 3. 页面平滑滚动到当前段落
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // 4. 原来的朗读 + 高亮逻辑
+    const text = el.innerText.trim();
+    document.querySelectorAll(".highlight").forEach(e => e.classList.remove("highlight"));
+    el.classList.add("highlight");
+
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "zh-CN";
+    utter.rate = 0.95;
+
+    utter.onend = () => {
+      currentIndex++;
+      readNext(); // 读完自动读下一段
+    };
+    synth.speak(utter);
+  }
+
+  // 开始朗读
+  readNext();
+}
+
+// 为砖雕小人添加朗读功能
+if (brickDoll) {
+  // 再添加一个点击事件监听器来处理朗读功能
+  brickDoll.addEventListener("click", function(e) {
+    // 执行朗读功能
+    readAndHighlight();
+  });
+}

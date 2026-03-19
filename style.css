@@ -164,8 +164,8 @@ body {
 /* 历史渊源 */
 .history-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
 }
 
 .history-item {
@@ -174,6 +174,9 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .history-item:hover {
@@ -185,6 +188,13 @@ body {
     color: #8B4513;
     margin-bottom: 1rem;
     font-size: 1.3rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .history-content {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* 工匠精神 */
@@ -216,8 +226,15 @@ body {
 /* 作品展示 */
 .works-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .works-content {
+        grid-template-columns: 1fr;
+    }
 }
 
 .work-card {
@@ -250,11 +267,13 @@ body {
     transform: rotateY(180deg);
 }
 
-.work-card:hover .card-front {
+.work-card:hover .card-front,
+.work-card.flipped .card-front {
     transform: rotateY(180deg);
 }
 
-.work-card:hover .card-back {
+.work-card:hover .card-back,
+.work-card.flipped .card-back {
     transform: rotateY(0deg);
 }
 
@@ -305,6 +324,16 @@ body {
 /* 百子图 - 多个孩童嬉戏的场景 */
 .hundred-boys {
     background-image: url('https://ts1.tc.mm.bing.net/th/id/OIP-C.IHhU90BksWjR5BLEo9MyWAHaEZ?rs=1&pid=ImgDetMain&o=7&rm=3');
+}
+
+/* 牡丹纹 - 经典吉祥纹样 */
+.peony-pattern {
+    background-image: url('boguweng.webp');
+}
+
+/* 博古纹 - 文人气息纹样 */
+.bogu-pattern {
+    background-image: url('mudanwen.webp');
 }
 
 /* 传承与创新 */
@@ -918,4 +947,176 @@ body {
   outline: none !important;
   box-shadow: none !important;
   background: transparent !important;
+}
+/* 顶部导航强制上下居中排列 */
+header, .header, .navbar {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* 主标题：增大和下方导航的间距，数字越大间距越大 */
+header h1, .site-title, .logo {
+  margin-bottom: 20px !important;
+  margin-top: 0 !important;
+}
+
+/* 导航菜单强制居中 */
+nav, .nav, .nav-menu {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+/* 历史渊源卡片整齐排版 */
+.cards-wrapper, .history-container {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+  align-items: stretch !important;
+  gap: 30px !important; /* 卡片之间的间距，数字越大间距越大 */
+}
+
+.history-container .card, .cards-wrapper .card {
+  width: 31% !important; /* 每行刚好放3个，留足间距 */
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+/* 手机端适配，自动改成每行1个，不会挤在一起 */
+@media (max-width: 768px) {
+  .history-container .card, .cards-wrapper .card {
+    width: 100% !important;
+  }
+}
+/* 导航栏放大优化 */
+/* 1. 增大导航栏整体高度 */
+header, .header, .navbar {
+  padding-top: 25px !important; /* 调大这个数字，导航栏顶部高度更高 */
+  padding-bottom: 25px !important; /* 调大这个数字，导航栏底部高度更高 */
+}
+
+/* 2. 放大导航菜单字体 */
+nav a, .nav-item, .menu-item {
+  font-size: 20px !important; /* 调大这个数字，导航字更大，默认一般是16px */
+  margin: 0 15px !important; /* 调大这个数字，导航选项之间的间距更大 */
+}
+
+/* 3. 放大主标题「临夏砖雕」的字体（可选） */
+header h1, .site-title, .logo {
+  font-size: 36px !important; /* 调大这个数字，主标题更大 */
+}
+
+/* 手机端适配，不会挤在一起 */
+@media (max-width: 768px) {
+  nav a, .nav-item, .menu-item {
+    font-size: 16px !important;
+    margin: 0 8px !important;
+  }
+  header h1, .site-title, .logo {
+    font-size: 28px !important;
+  }
+}
+/* 临夏砖雕牡丹纹样正文背景 */
+body {
+  background-image: url("bg-pattern.png");
+  background-repeat: repeat;       /* 让图案平铺铺满整个页面 */
+  background-size: 600px;          /* 控制图案大小，数字越小图案越密，越大越疏 */
+  background-color: #f8f5e6;       /* 暖米色底色，和砖雕风格更搭 */
+  background-attachment: fixed;    /* 让背景固定，滚动页面时图案不动 */
+}
+
+/* 给内容区域加半透明白色遮罩，保证文字清晰可读 */
+.container, section, .content {
+  background-color: rgba(255, 255, 255, 0.9); /* 0.9 是透明度，越接近1越不透明 */
+  padding: 25px;
+  border-radius: 12px;
+  margin: 20px auto;
+}
+/* 临夏砖雕牡丹纹样——整页背景（单张铺满） */
+body {
+  background-image: url("bg-pattern.png");
+  background-repeat: no-repeat;    /* 不重复，只用一张图 */
+  background-size: cover;          /* 自动缩放，铺满整个浏览器窗口 */
+  background-position: center;      /* 图片居中显示 */
+  background-attachment: fixed;    /* 滚动页面时背景固定不动 */
+  background-color: #f8f5e6;       /* 暖米色底色，和纹样风格匹配 */
+}
+
+/* 内容区域半透明白色，保证文字清晰 */
+.container, section, .content {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  padding: 25px;
+  border-radius: 12px;
+  margin: 20px auto;
+}
+
+/* 给内容区域加半透明白色遮罩，保证文字清晰可读 */
+.container, section, .content {
+  background-color: rgba(255, 255, 255, 0.9); /* 0.9 是透明度，越接近1越不透明 */
+  padding: 25px;
+  border-radius: 12px;
+  margin: 20px auto;
+}
+/* 把内容区域白色背景完全透明化 */
+.container, section, .content, .card-container {
+  background-color: transparent !important;
+  /* 保留原有的内边距和圆角，不破坏布局 */
+  padding: 25px;
+  border-radius: 12px;
+  margin: 20px auto;
+}
+
+/* 让卡片也变成半透明，避免文字被背景淹没 */
+.card {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+/* 朗读中的文字高亮样式 */
+[data-speech-id].speaking {
+  background-color: rgba(255, 215, 0, 0.3) !important; /* 半透金色 */
+  border-left: 4px solid #d4af37;
+  transition: all 0.3s ease;
+}
+* 朗读时高亮当前文字 */
+.highlight {
+  background-color: #fff399 !important;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+/* 朗读时文字高亮样式 */
+.highlight {
+  background-color: #fff399 !important;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+/* 一整张砖雕背景图撑满页面 */
+body {
+  margin: 0;
+  padding: 0;
+  /* 用你选中的那张砖雕纹样图 */
+  background-image: url("c689a5d06bf060a25ef446c18163e48b.png");
+  /* 让图片自动缩放，撑满整个浏览器窗口 */
+  background-size: cover;
+  /* 不重复，只显示一整张图 */
+  background-repeat: no-repeat;
+  /* 背景固定在窗口，不随页面滚动 */
+  background-attachment: fixed;
+  /* 让纹样居中显示 */
+  background-position: center;
+  /* 复古暖底色，和纹样更协调 */
+  background-color: #f0e6d6;
+  /* 降低透明度，保证文字清晰 */
+  opacity: 0.85;
+}
+
+/* 内容区域半透明白底，避免文字被背景挡住 */
+.container, .content, section, .navbar {
+  background-color: rgba(255, 253, 245, 0.92);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }

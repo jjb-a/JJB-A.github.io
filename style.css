@@ -294,7 +294,7 @@ body {
 
 /* 回纹 - 连续回旋的几何纹样 */
 .spiral-pattern {
-    background-image: url('https://pic.nximg.cn/file/20160823/19148775_083703710597_2.jpg');
+  background-image: url('./19148775_083031845859_2.jpg');
 }
 
 /* 鹿鹤同春 - 鹿与鹤的组合纹样 */
@@ -473,11 +473,20 @@ body {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 100px;
-    height: 150px;
+    width: 8vw;
+    max-width: 100px;
+    min-width: 60px;
+    aspect-ratio: 2/3;
     cursor: pointer;
     z-index: 9999;
     transition: transform 0.5s ease;
+}
+
+/* 父容器 */
+.doll-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
     filter: grayscale(0.8) contrast(1.2);
     box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3), 2px 2px 5px rgba(0,0,0,0.2);
     border: 2px solid #8B4513;
@@ -485,7 +494,7 @@ body {
 }
 
 /* 砖雕质感基础样式 */
-.brick-doll * {
+.doll-container * {
     background-color: #A9A9A9;
     border: 2px solid #8B4513;
     box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.1);
@@ -494,19 +503,20 @@ body {
 
 /* 头部 */
 .doll-head {
-    width: 50px;
-    height: 50px;
+    width: 50%;
+    height: 33.33%;
     border-radius: 50%;
-    top: 10px;
-    left: 25px;
+    top: 6.67%;
+    left: 25%;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M15 20 L35 20 M20 25 L30 25 M22 30 L28 30" stroke="%238B4513" stroke-width="1" opacity="0.5"/></svg>');
+    background-size: cover;
 }
 
 .doll-face {
-    width: 30px;
-    height: 30px;
-    top: 10px;
-    left: 10px;
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
     border-radius: 50%;
     border: none;
     box-shadow: none;
@@ -514,59 +524,60 @@ body {
 }
 
 .doll-hat {
-    width: 40px;
-    height: 15px;
-    top: -5px;
-    left: 5px;
+    width: 80%;
+    height: 30%;
+    top: -10%;
+    left: 10%;
     border-radius: 20px 20px 0 0;
     border-bottom: none;
 }
 
 /* 身体 */
 .doll-body {
-    width: 60px;
-    height: 70px;
-    top: 60px;
-    left: 20px;
+    width: 60%;
+    height: 46.67%;
+    top: 40%;
+    left: 20%;
     border-radius: 30px 30px 0 0;
 }
 
 .doll-clothes {
-    width: 40px;
-    height: 40px;
-    top: 10px;
-    left: 10px;
+    width: 66.67%;
+    height: 57.14%;
+    top: 14.29%;
+    left: 16.67%;
     border-radius: 20px 20px 0 0;
     border: none;
     box-shadow: none;
     background: none;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path d="M10 15 L30 15 M20 15 L20 35" stroke="%238B4513" stroke-width="1" opacity="0.5"/></svg>');
+    background-size: cover;
 }
 
 /* 手臂 */
 .doll-arm {
-    width: 15px;
-    height: 40px;
-    top: 70px;
+    width: 15%;
+    height: 26.67%;
+    top: 46.67%;
     border-radius: 10px;
 }
 
 .doll-arm.left {
-    left: 15px;
+    left: 15%;
     transform-origin: bottom center;
 }
 
 .doll-arm.right {
-    right: 15px;
+    right: 15%;
     transform-origin: bottom center;
 }
 
 /* 刻刀 */
 .doll-knife {
-    width: 8px;
-    height: 20px;
-    top: -10px;
-    left: 3.5px;
+    width: 53.33%;
+    height: 50%;
+    top: -25%;
+    left: 23.33%;
     border-radius: 4px;
     border: none;
     background-color: #8B4513;
@@ -575,10 +586,10 @@ body {
 
 /* 腿部 */
 .doll-legs {
-    width: 40px;
-    height: 20px;
-    top: 130px;
-    left: 30px;
+    width: 40%;
+    height: 13.33%;
+    top: 86.67%;
+    left: 30%;
     border-radius: 0 0 20px 20px;
     border-top: none;
 }
@@ -899,4 +910,12 @@ body {
         width: 150px;
         height: 150px;
     }
+}
+/* 强制去掉小人所有边框和多余样式 */
+.character-wrapper, 
+.character-wrapper * {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }

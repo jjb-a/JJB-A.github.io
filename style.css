@@ -1,0 +1,902 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SimSun', serif;
+    background-color: #F5F5DC;
+    color: #3E2723;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23F5F5DC"/><path d="M0 0 L100 0 L100 100 L0 100 Z" fill="none" stroke="%23D2B48C" stroke-width="0.5" opacity="0.3"/></svg>');
+    line-height: 1.6;
+}
+
+/* 导航栏 */
+.navbar {
+    background-color: #3E2723;
+    color: #F5F5DC;
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.navbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #F5F5DC;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    color: #F5F5DC;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #D4AF37;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #F5F5DC;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+}
+
+/* 英雄区域 */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%238B4513"/><path d="M0 0 L100 0 L100 100 L0 100 Z" fill="none" stroke="%23A0522D" stroke-width="1" opacity="0.5"/></svg>');
+    color: #F5F5DC;
+    text-align: center;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #8B4513;
+    color: #F5F5DC;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.btn:hover {
+    background-color: #A0522D;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+/* 通用章节样式 */
+.section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: #8B4513;
+    position: relative;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: #D4AF37;
+}
+
+/* 历史渊源 */
+.history-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.history-item {
+    background-color: rgba(255,255,255,0.8);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.history-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.history-item h3 {
+    color: #8B4513;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+/* 工匠精神 */
+.craftsman-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.craftsman-item {
+    background-color: rgba(255,255,255,0.8);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.craftsman-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.craftsman-item h3 {
+    color: #8B4513;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+/* 作品展示 */
+.works-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.work-card {
+    perspective: 1000px;
+    height: 400px;
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.6s ease;
+}
+
+.card-front {
+    background-color: rgba(255,255,255,0.9);
+}
+
+.card-back {
+    background-color: #8B4513;
+    color: #F5F5DC;
+    transform: rotateY(180deg);
+}
+
+.work-card:hover .card-front {
+    transform: rotateY(180deg);
+}
+
+.work-card:hover .card-back {
+    transform: rotateY(0deg);
+}
+
+.card-image {
+    width: 200px;
+    height: 200px;
+    margin: 1rem 0;
+    border-radius: 4px;
+    background-color: #D2B48C;
+    background-size: cover;
+    background-position: center;
+    filter: sepia(0.3) grayscale(0.2) contrast(1.1);
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2), 1px 1px 2px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 红园 - 古典园林砖雕 */
+.red-garden {
+    background-image: url('https://ts1.tc.mm.bing.net/th/id/OIP-C.LjTzNkHfU4Y1kx4Y0yxNJAHaEP?rs=1&pid=ImgDetMain&o=7&rm=3');
+}
+
+/* 东公馆 - 民国建筑砖雕 */
+.east-mansion {
+    background-image: url('https://www.zsbeike.com/imgs/I/I09355/i09355.0240.2[3f827964747a].jpg');
+}
+
+/* 八坊十三巷 - 街巷民居砖雕 */
+.eight-lanes {
+    background-image: url('https://ts2.tc.mm.bing.net/th/id/OIP-C.1rVa_Nl5w8GiXfr-6akBnwHaEv?rs=1&pid=ImgDetMain&o=7&rm=3');
+}
+
+/* 蝙蝠纹 - 经典吉祥纹样 */
+.bat-pattern {
+    background-image: url('https://ts1.tc.mm.bing.net/th/id/OIP-C.eHljH_S-b4rivnGFt2DA3AHaF4?rs=1&pid=ImgDetMain&o=7&rm=3');
+}
+
+/* 回纹 - 连续回旋的几何纹样 */
+.spiral-pattern {
+    background-image: url('https://pic.nximg.cn/file/20160823/19148775_083703710597_2.jpg');
+}
+
+/* 鹿鹤同春 - 鹿与鹤的组合纹样 */
+.deer-crane {
+    background-image: url('https://n.sinaimg.cn/history/transform/20170930/lK9S-fymkwwk7234342.jpg');
+}
+
+/* 百子图 - 多个孩童嬉戏的场景 */
+.hundred-boys {
+    background-image: url('https://ts1.tc.mm.bing.net/th/id/OIP-C.IHhU90BksWjR5BLEo9MyWAHaEZ?rs=1&pid=ImgDetMain&o=7&rm=3');
+}
+
+/* 传承与创新 */
+.heritage-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.heritage-item {
+    background-color: rgba(255,255,255,0.8);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.heritage-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.heritage-item h3 {
+    color: #8B4513;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+/* 联系我们 */
+.contact-content {
+    background-color: rgba(255,255,255,0.8);
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-content p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* 360°全景展厅 */
+.panorama {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.panorama.active {
+    display: flex;
+}
+
+.panorama-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.panorama-image {
+    width: 500%;
+    height: 100%;
+    background-image: url('https://p8.ssl.qhimg.com/t01b4b4b4b4b4b4b4b4.jpg');
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+    filter: sepia(0.3) grayscale(0.2) contrast(1.1);
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.panorama-markers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.marker {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+
+.marker:hover {
+    transform: scale(1.5);
+    box-shadow: 0 0 10px #FFD700;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0,0,0,0.5);
+    color: #F5F5DC;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* 标注信息弹窗 */
+.marker-info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255,255,255,0.95);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 2100;
+    display: none;
+    max-width: 400px;
+    width: 90%;
+}
+
+.marker-info.active {
+    display: block;
+}
+
+.marker-info h3 {
+    color: #8B4513;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.close-info {
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #8B4513;
+    color: #F5F5DC;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-info:hover {
+    background-color: #A0522D;
+}
+
+/* 可互动砖雕小人 */
+.brick-doll {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 150px;
+    cursor: pointer;
+    z-index: 9999;
+    transition: transform 0.5s ease;
+    filter: grayscale(0.8) contrast(1.2);
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3), 2px 2px 5px rgba(0,0,0,0.2);
+    border: 2px solid #8B4513;
+    border-radius: 4px;
+}
+
+/* 砖雕质感基础样式 */
+.brick-doll * {
+    background-color: #A9A9A9;
+    border: 2px solid #8B4513;
+    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.1);
+    position: absolute;
+}
+
+/* 头部 */
+.doll-head {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    top: 10px;
+    left: 25px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M15 20 L35 20 M20 25 L30 25 M22 30 L28 30" stroke="%238B4513" stroke-width="1" opacity="0.5"/></svg>');
+}
+
+.doll-face {
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: none;
+    background: none;
+}
+
+.doll-hat {
+    width: 40px;
+    height: 15px;
+    top: -5px;
+    left: 5px;
+    border-radius: 20px 20px 0 0;
+    border-bottom: none;
+}
+
+/* 身体 */
+.doll-body {
+    width: 60px;
+    height: 70px;
+    top: 60px;
+    left: 20px;
+    border-radius: 30px 30px 0 0;
+}
+
+.doll-clothes {
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    left: 10px;
+    border-radius: 20px 20px 0 0;
+    border: none;
+    box-shadow: none;
+    background: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path d="M10 15 L30 15 M20 15 L20 35" stroke="%238B4513" stroke-width="1" opacity="0.5"/></svg>');
+}
+
+/* 手臂 */
+.doll-arm {
+    width: 15px;
+    height: 40px;
+    top: 70px;
+    border-radius: 10px;
+}
+
+.doll-arm.left {
+    left: 15px;
+    transform-origin: bottom center;
+}
+
+.doll-arm.right {
+    right: 15px;
+    transform-origin: bottom center;
+}
+
+/* 刻刀 */
+.doll-knife {
+    width: 8px;
+    height: 20px;
+    top: -10px;
+    left: 3.5px;
+    border-radius: 4px;
+    border: none;
+    background-color: #8B4513;
+    box-shadow: none;
+}
+
+/* 腿部 */
+.doll-legs {
+    width: 40px;
+    height: 20px;
+    top: 130px;
+    left: 30px;
+    border-radius: 0 0 20px 20px;
+    border-top: none;
+}
+
+/* 动画效果 */
+@keyframes wave {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(30deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(30deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes nod {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-5px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes sway {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-2deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.brick-doll:hover {
+    animation: sway 2s ease-in-out infinite;
+}
+
+.brick-doll:hover .doll-arm.right {
+    animation: wave 2s ease-in-out infinite;
+}
+
+.brick-doll:hover .doll-head {
+    animation: nod 2s ease-in-out infinite;
+}
+
+.brick-doll:active {
+    transform: scale(0.95);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .brick-doll {
+        width: 80px;
+        height: 120px;
+    }
+    
+    .doll-head {
+        width: 40px;
+        height: 40px;
+        left: 20px;
+    }
+    
+    .doll-body {
+        width: 50px;
+        height: 60px;
+        left: 15px;
+    }
+    
+    .doll-arm {
+        width: 12px;
+        height: 35px;
+    }
+    
+    .doll-legs {
+        width: 30px;
+        height: 15px;
+        left: 25px;
+    }
+}
+
+/* 砖雕小知识弹窗 */
+.knowledge-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    transform: none;
+    background-color: rgba(255,255,255,0.95);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 1100;
+    display: none;
+    max-width: 400px;
+    width: 90%;
+}
+
+.knowledge-popup.active {
+    display: block;
+}
+
+.knowledge-popup h3 {
+    color: #8B4513;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.close-knowledge {
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #8B4513;
+    color: #F5F5DC;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-knowledge:hover {
+    background-color: #A0522D;
+}
+
+/* 引导弹窗 */
+.guide-popup {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    transform: none;
+    background-color: rgba(255,255,255,0.95);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 1100;
+    display: none;
+    max-width: 400px;
+    width: 90%;
+}
+
+.guide-popup.active {
+    display: block;
+}
+
+.guide-popup h3 {
+    color: #8B4513;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.close-guide {
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #8B4513;
+    color: #F5F5DC;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-guide:hover {
+    background-color: #A0522D;
+}
+
+/* 回到顶部按钮 */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #8B4513;
+    color: #F5F5DC;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 900;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.back-to-top.active {
+    display: flex;
+}
+
+.back-to-top:hover {
+    background-color: #A0522D;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+/* 图片放大模态框 */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    position: relative;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+}
+
+#modal-image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: #3E2723;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+    }
+
+    .nav-links li {
+        margin: 1rem 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .section {
+        padding: 4rem 1rem;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+    }
+
+    .brick-doll {
+        width: 60px;
+        height: 90px;
+    }
+
+    .doll-body {
+        width: 45px;
+        height: 60px;
+    }
+
+    .doll-arm {
+        width: 10px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .section h2 {
+        font-size: 1.8rem;
+    }
+
+    .work-card {
+        height: 350px;
+    }
+
+    .card-image {
+        width: 150px;
+        height: 150px;
+    }
+}
